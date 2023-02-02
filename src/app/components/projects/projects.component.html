@@ -1,0 +1,62 @@
+<div id="bod" class="Projects">
+  <div class="Container">
+    <h1 id="seeour">See our top quality</h1>
+    <h2 id="popro">Popular Projects</h2>
+    <div class="bordr"></div>
+    <div class="con">
+      <button
+        class="Card"
+        *ngFor="let Project of Projects"
+        (click)="OpenPopUp()"
+      >
+        <img id="pic" src="{{ Project.Img }}" alt="" />
+        <div id="title">{{ Project.Title }}</div>
+        <div id="discrip">
+          {{ Project.Discrib }}
+        </div>
+      </button>
+    </div>
+  </div>
+  <!-- -------------------------------------------- -->
+  <div *ngIf="popup">
+    <div class="popupModal-backdrop"></div>
+
+    <div class="popupModal-dialog">
+      <button id="closeBUt" (click)="ClosePopUp()"></button>
+      <div class="popupModal-content">
+        <div class="popupModal-body">
+          <div class="ContentB">
+            <h1 id="ProTitle">Project Title</h1>
+            <h5 id="ProDis">
+              Project Discrib
+              fdhgjfdgdfjgdhgjdhgdjghdjghdghdgjdhgkdhgjdhgdkghdkghdkghdkgd
+              gdfjghdfgkhdgkjdhgdkjghdkjghdjghdkghdgkdhgkdghdkghdkghdgkdhgkdhgkdghkdghdkghdkg
+            </h5>
+            <img *ngFor="let Pic of Pics" src="{{ Pic }}" alt="" />
+
+            <!--  -->
+            <div style="padding: 56.25% 0 0 0; position: relative">
+              <iframe
+                src="https://player.vimeo.com/video/378527333?h=91412b96f2"
+                style="
+                  position: absolute;
+                  top: 0;
+                  left: 0;
+                  width: 100%;
+                  height: 100%;
+                "
+                frameborder="0"
+                allow="autoplay; fullscreen; picture-in-picture"
+                allowfullscreen
+              ></iframe>
+            </div>
+            <script src="https://player.vimeo.com/api/player.js"></script>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<!--  -->
+
+<!--  -->

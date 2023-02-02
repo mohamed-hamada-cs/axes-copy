@@ -1,0 +1,119 @@
+.footr {
+  width: 100%;
+  min-height: 120px;
+  height: 120px;
+  background-color: #1d1d1d;
+  /*  position: fixed;
+  bottom: 0px; */
+}
+.Container {
+  width: 90%;
+  margin-left: 5%;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-around;
+}
+.icons {
+  width: 22%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+.ico {
+  margin: 5px;
+  width: 32px;
+  height: 28px;
+}
+.brand {
+  display: flex;
+  align-self: center;
+  width: 23%;
+  height: 75%;
+  background-image: url("../../../assets/Pics/LogO.png");
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+}
+hr {
+  position: relative;
+  width: 70%;
+  top: 25px;
+  border: none;
+  height: 2px;
+  background: white;
+  margin-bottom: 50px;
+}
+
+@media (max-width: 1024px) {
+  .Container {
+    width: 95%;
+    margin-left: 2.5%;
+  }
+  .icons {
+    width: 26%;
+  }
+  .brand {
+    width: 28%;
+    height: 75%;
+  }
+  hr {
+    width: 45%;
+  }
+}
+@media (max-width: 768px) {
+  .footr {
+    min-height: 220px;
+    height: 220px;
+  }
+  .Container {
+    width: 90%;
+    margin-left: 5%;
+    display: flex;
+    flex-direction: column;
+  }
+  .icons {
+    width: 60%;
+    order: 30;
+    margin-bottom: 5%;
+  }
+
+  .brand {
+    order: 0;
+    margin-top: 2%;
+    align-self: center;
+    width: 48%;
+    height: 100%;
+  }
+  hr {
+    order: 20;
+    position: relative;
+    width: 75%;
+    top: 25px;
+    border: none;
+    height: 2px;
+    background: white;
+    margin-bottom: 50px;
+  }
+}
+@media (max-width: 480px) {
+  .footr {
+    min-height: 240px;
+    height: 240px;
+  }
+  .icons {
+    width: 80%;
+    margin-bottom: 6%;
+  }
+  .brand {
+    order: 0;
+    margin-top: 2%;
+    align-self: center;
+    width: 70%;
+    height: 90%;
+  }
+  hr {
+    width: 85%;
+    top: 32px;
+  }
+}

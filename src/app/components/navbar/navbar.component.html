@@ -1,0 +1,37 @@
+<div class="navbar">
+  <div class="container">
+    <a id="logo" routerLink="/LandingPage" routerLinkActive="active">
+      <img src="assets/Pics/LogO.png" alt="" />
+    </a>
+
+    <div id="ItemsList" class="Items">
+      <!--  <a href="#">Home</a> -->
+      <!-- logo pic redirect to home page -->
+      <img id="smallLogo" src="assets/Pics/logo1.png" alt="" />
+      <a class="a-list" href="">Work</a>
+      <!--     <a href="">Clints</a> -->
+      <a class="a-list" href="">Services</a>
+      <!-- include Clints heading -->
+      <a class="a-list" href="">Contact Us</a>
+      <a class="a-list" href="">About Us</a>
+      <!-- include our team section -->
+      <!--  <a href="">Our Team</a> -->
+    </div>
+    <a
+      id="dropdown-icon"
+      (click)="DropDown()"
+      [ngStyle]="{ 'background-image': 'url(' + IconDropList + ')' }"
+    ></a>
+    <a
+      id="menu"
+      (click)="Menu()"
+      [ngStyle]="{ 'background-image': 'url(' + IconMenu + ')' }"
+    ></a>
+    <div class="Items-mediam" *ngIf="mediam">
+      <a href="">Work</a>
+      <a href="">Services</a>
+      <a href="">Contact Us</a>
+      <a href="">About Us</a>
+    </div>
+  </div>
+</div>

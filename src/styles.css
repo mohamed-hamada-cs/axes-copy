@@ -1,0 +1,90 @@
+/* You can add global styles to this file, and also import other style files */
+* {
+  width: 100%;
+  height: 100%;
+  padding: 0;
+  margin: 0;
+}
+@font-face {
+  font-family: "Nexa Slab Regular Italic";
+  src: local("Nexa Slab Regular Italic"),
+    url("assets/fonts/Fontfabric-NexaSlabRegularItalic.otf") format("opentype");
+}
+@font-face {
+  font-family: "Nexa Slab xBold Italic";
+  src: local("Nexa Slab xBold Italic"),
+    url("assets/fonts/Fontfabric-NexaSlabxBoldItalic.otf") format("opentype");
+}
+
+@font-face {
+  font-family: "Nexa Slab Thin Italic";
+  src: local("Nexa Slab Thin Italic"),
+    url("assets/fonts/Fontfabric-NexaSlabThinItalic.otf") format("opentype");
+}
+@font-face {
+  font-family: "Nexa Slab Thin";
+  src: local("Nexa Slab Thin"),
+    url("assets/fonts/Fontfabric-NexaSlabThin.otf") format("opentype");
+}
+@font-face {
+  font-family: "Nexa Bold Regular";
+  src: local("Nexa Bold Regular"),
+    url("assets/fonts/Nexa-Bold.otf") format("opentype");
+}
+@font-face {
+  font-family: "Nexa Slab Book Italic Italic";
+  src: local("Nexa Slab Book Italic Italic"),
+    url("assets/fonts/Fontfabric-NexaSlabBookItalic.otf") format("opentype");
+}
+@font-face {
+  font-family: "Trap Medium";
+  src: local("Trap Medium"),
+    url("assets/fonts/Trap-Medium500.otf") format("opentype");
+}
+@font-face {
+  font-family: "Trap Black";
+  src: local("Trap Black"),
+    url("assets/fonts/Trap-Black900.otf") format("opentype");
+}
+@font-face {
+  font-family: "Trap SemiBold";
+  src: local("Trap SemiBold"),
+    url("assets/fonts/Trap-SemiBold600.otf") format("opentype");
+}
+@font-face {
+  font-family: "Trap Bold";
+  src: local("Trap Bold"),
+    url("assets/fonts/Trap-Bold700.otf") format("opentype");
+}
+@font-face {
+  font-family: "Trap Extra Bold";
+  src: local("Trap Extra Bold"),
+    url("assets/fonts/Trap-ExtraBold800.otf") format("opentype");
+}
+@font-face {
+  font-family: "Trap Light";
+  src: local("Trap Light"),
+    url("assets/fonts/Trap-Light300.otf") format("opentype");
+}
+
+@font-face {
+  font-family: "Trap Regular";
+  src: local("Trap Regular"),
+    url("assets/fonts/Trap-Regular400.otf") format("opentype");
+}
+body {
+  margin: 0;
+  font-family: sans-serif, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
+    "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
+    sans-serif;
+  /* -webkit-font-smoothing: antialiased; */
+  /* -moz-osx-font-smoothing: grayscale; */
+}
+
+/* 
+  320px — 480px: Mobile devices (!!)
+  481px — 768px: iPads, Tablets (!!)
+  769px — 1024px: Small screens, laptops (!!)
+  1025px — 1200px: Desktops, large screens (!!)
+  1201px and more —  Extra large screens, TV
+  */

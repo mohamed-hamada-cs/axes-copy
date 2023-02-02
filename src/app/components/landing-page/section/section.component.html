@@ -1,0 +1,37 @@
+<div class="section {{ sec_Background }}" *ngIf="Dirc && Flag">
+  <div id="cont1" class="Content left">
+    <h1>{{ Title }}</h1>
+    <p class="param">
+      {{ Describtion }}
+    </p>
+    <button
+      class="{{ But_background }}"
+      routerLink="/Projects/Cat"
+      routerLinkActive="active"
+    >
+      Take a Look at our projects
+    </button>
+  </div>
+  <div class="pic">
+    <img src="{{ Img }}" alt="" />
+  </div>
+</div>
+
+<div class="section  {{ sec_Background }}" *ngIf="!Dirc && Flag">
+  <div class="pic left">
+    <img src="{{ Img }}" alt="" />
+  </div>
+  <div id="cont2" class="Content right">
+    <h1>{{ Title }}</h1>
+    <p class="param">
+      {{ Describtion }}
+    </p>
+    <button
+      class="{{ But_background }}"
+      routerLink="/Projects/Cat"
+      routerLinkActive="active"
+    >
+      Take a Look at our projects
+    </button>
+  </div>
+</div>
