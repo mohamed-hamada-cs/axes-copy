@@ -1,15 +1,17 @@
 <div class="section {{ sec_Background }}" *ngIf="Dirc && Flag">
   <div id="cont1" class="Content left">
-    <h1>{{ Title }}</h1>
+    <h1 class="rightH" *ngIf="f">{{ Title }}</h1>
+    <h1 *ngIf="!f">{{ Title }}</h1>
     <p class="param">
       {{ Describtion }}
     </p>
     <button
+      id="ButN1"
       class="{{ But_background }}"
-      routerLink="/Projects/Cat"
+      routerLink="/Projects/{{ Cat }}"
       routerLinkActive="active"
     >
-      Take a Look at our projects
+      {{ ButText }}
     </button>
   </div>
   <div class="pic">
@@ -27,11 +29,12 @@
       {{ Describtion }}
     </p>
     <button
+      id="ButN2"
       class="{{ But_background }}"
-      routerLink="/Projects/Cat"
+      routerLink="/Projects/{{ Cat }}"
       routerLinkActive="active"
     >
-      Take a Look at our projects
+      {{ ButText }}
     </button>
   </div>
 </div>

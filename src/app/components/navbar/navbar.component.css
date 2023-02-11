@@ -5,8 +5,8 @@
   background-color: #1d1d1d;
 }
 .container {
-  width: 90%;
-  margin-left: 5%;
+  width: 85%;
+  margin-left: 7.5%;
   display: flex;
   justify-content: space-between;
   align-items: center;

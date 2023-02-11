@@ -17,12 +17,15 @@
 .right {
   direction: rtl;
 }
-
+.rightH {
+  text-align: right;
+}
 h1 {
   font-family: "Trap Black";
   font-size: 4em;
   height: 20%;
   padding-top: 2%;
+  width: 95%;
 }
 .param {
   font-family: "Trap SemiBold";

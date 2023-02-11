@@ -7,6 +7,7 @@ import { ProjectsComponent } from './components/projects/projects.component';
 import { SectionComponent } from './components/landing-page/section/section.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { FooterComponent } from './components/footer/footer.component';
+import { HttpClientModule } from '@angular/common/http';
 /*  */
 /* import { RichTextEditorModule } from '@syncfusion/ej2-angular-richtexteditor'; */
 /* import {
@@ -25,7 +26,7 @@ import { FooterComponent } from './components/footer/footer.component';
     FooterComponent,
   ],
   /* RichTextEditorModule in imports */
-  imports: [BrowserModule, AppRoutingModule],
+  imports: [BrowserModule, AppRoutingModule, HttpClientModule],
   /* ToolbarService, LinkService, ImageService, HtmlEditorService in Providses */
   providers: [],
   bootstrap: [AppComponent],

@@ -3,18 +3,18 @@
     <h1 id="seeour">See our top quality</h1>
     <h2 id="popro">Popular Projects</h2>
     <div class="bordr"></div>
-    <div class="con">
+    <div class="con" *ngIf="!empty">
       <button
         class="Card"
-        *ngFor="let Project of Projects"
-        (click)="OpenPopUp()"
+        *ngFor="let Project of filteredData"
+        (click)="OpenPopUp(Project.id)"
       >
-        <img id="pic" src="{{ Project.Img }}" alt="" />
-        <div id="title">{{ Project.Title }}</div>
-        <div id="discrip">
-          {{ Project.Discrib }}
-        </div>
+        <img id="pic" src="assets/Pics/food.png" alt="" />
+        <h1 id="title">{{ Project.attributes.title }}</h1>
       </button>
+    </div>
+    <div class="emp" *ngIf="empty">
+      <h1>Sorry,There are no projects yet</h1>
     </div>
   </div>
   <!-- -------------------------------------------- -->
@@ -26,18 +26,29 @@
       <div class="popupModal-content">
         <div class="popupModal-body">
           <div class="ContentB">
-            <h1 id="ProTitle">Project Title</h1>
-            <h5 id="ProDis">
+            <h1 id="ProTitle">{{ OneProject.attributes.title }}</h1>
+            <div
+              id="ProDis"
+              [innerHTML]="OneProject.attributes.description"
+            ></div>
+            <!-- <h5>
               Project Discrib
               fdhgjfdgdfjgdhgjdhgdjghdjghdghdgjdhgkdhgjdhgdkghdkghdkghdkgd
               gdfjghdfgkhdgkjdhgdkjghdkjghdjghdkghdgkdhgkdghdkghdkghdgkdhgkdhgkdghkdghdkghdkg
-            </h5>
-            <img *ngFor="let Pic of Pics" src="{{ Pic }}" alt="" />
+            </h5> -->
+            <img
+              *ngFor="let Pic of Pics"
+              src="{{ Pic.attributes.url }}"
+              alt=""
+            />
 
             <!--  -->
-            <div style="padding: 56.25% 0 0 0; position: relative">
+            <div
+              style="padding: 56.25% 0 0 0; position: relative"
+              *ngFor="let vd of Vids"
+            >
               <iframe
-                src="https://player.vimeo.com/video/378527333?h=91412b96f2"
+                src="{{ vd }}"
                 style="
                   position: absolute;
                   top: 0;

@@ -6,7 +6,18 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./landing-page.component.css'],
 })
 export class LandingPageComponent implements OnInit {
-  Objects = [
+  ChangeLang() {
+    var lang = document.getElementById('changelang')?.innerHTML;
+    if (lang == 'Ar') {
+      this.Objects = this.Objects_ar;
+      document.getElementById('changelang')!.innerHTML = 'En';
+    } else {
+      this.Objects = this.Objects_en;
+      document.getElementById('changelang')!.innerHTML = 'Ar';
+    }
+  }
+
+  Objects_en = [
     {
       Title: 'Marketing',
       Describtion: `It's not just design and advertising, there's a Lot of stuff behind it.
@@ -17,6 +28,8 @@ export class LandingPageComponent implements OnInit {
       Img: 'assets/Pics/Services1.png',
       sec_Background: 'whiteSec',
       But_background: 'blueBut',
+      Lg: 'en',
+      Cat: 'OnlineMarketing',
       Dirc: true,
     },
     {
@@ -28,6 +41,8 @@ export class LandingPageComponent implements OnInit {
       Img: 'assets/Pics/Services2.png',
       sec_Background: 'blueSec',
       But_background: 'blackBut',
+      Lg: 'en',
+      Cat: 'Branding',
       Dirc: false,
     },
     {
@@ -42,6 +57,8 @@ export class LandingPageComponent implements OnInit {
       Img: 'assets/Pics/Services3.png',
       sec_Background: 'whiteSec',
       But_background: 'blueBut',
+      Lg: 'en',
+      Cat: 'VideoProduction',
       Dirc: true,
     },
     {
@@ -54,6 +71,8 @@ export class LandingPageComponent implements OnInit {
       Img: 'assets/Pics/Services4.png',
       sec_Background: 'blackSec',
       But_background: 'blueBut',
+      Lg: 'en',
+      Cat: 'VideoProduction',
       Dirc: false,
     },
     {
@@ -66,6 +85,8 @@ export class LandingPageComponent implements OnInit {
       Img: 'assets/Pics/Services5.png',
       sec_Background: 'whiteSec',
       But_background: 'blueBut',
+      Lg: 'en',
+      Cat: 'WebDevelopment',
       Dirc: true,
     },
     {
@@ -76,10 +97,95 @@ export class LandingPageComponent implements OnInit {
       Img: 'assets/Pics/Services6.png',
       sec_Background: 'blueSec',
       But_background: 'blackBut',
+      Lg: 'en',
+      Cat: 'DesktopMobileDevelopment',
       Dirc: false,
     },
     ,
   ];
+  Objects_ar = [
+    {
+      Title: 'تسـويـق',
+      Describtion: `لا يتعلق الأمر بالتصميم والإعلان فقط ، فهناك الكثير من الأشياء وراءه.
+      يجب أن تبني عملك على خطط تسويقية متكاملة ،
+      كل ذلك يساهم في تعزيز ظهور علامتك التجارية
+      مع زيادة ملحوظة في مبيعاتك ، وسوف تقدم لك Axes
+      بأفضل الأسعار في السوق.`,
+      Img: 'assets/Pics/Services1.png',
+      sec_Background: 'whiteSec',
+      But_background: 'blueBut',
+      Lg: 'ar',
+      Cat: 'OnlineMarketing',
+      Dirc: true,
+    },
+    {
+      Title: 'العلامة التجارية',
+      Describtion: `إذا قال لك أحدهم: هل تترك هويتك بالطبع
+      سوف ترفض!
+      لذلك لا تقبل أن تكون علامتك التجارية بدون هوية حقيقية.
+      Axes ستقدمها لك بطريقة خاصة.`,
+      Img: 'assets/Pics/Services2.png',
+      sec_Background: 'blueSec',
+      But_background: 'blackBut',
+      Lg: 'ar',
+      Cat: 'Branding',
+      Dirc: false,
+    },
+    {
+      Title: 'انتاج الفيديو',
+      Describtion: `في كثير من الأحيان تريد إنشاء جودة عالية واحترافية
+      مقاطع فيديو احترافية للترويج لعملك كـ
+      رائد أعمال أو لإشراك جمهورك إذا كنت كذلك
+      منشئ محتوى ، وسنوفر لك مع Axes
+      بأفضل المعدات التي تحتاجها مع فريق
+      خبرة كبيرة في المجال لتنتهي مع الأفضل
+      فيديو ممكن الشكل والجودة.`,
+      Img: 'assets/Pics/Services3.png',
+      sec_Background: 'whiteSec',
+      But_background: 'blueBut',
+      Lg: 'ar',
+      Cat: 'VideoProduction',
+      Dirc: true,
+    },
+    {
+      Title: 'انتاج الفيديو',
+      Describtion: `ما هو أفضل وقت لالتقاط صورة؟
+      نعم ، أفضل وقت تلتقطه كاميرات Axes ، لأنه
+      نقدم لكم مجموعة مميزة من المعدات التي تساعد على
+      يبرز الصورة بكامل روعتها وبأفضل جودة ،
+      والتي من خلالها تجذب جمهورك.`,
+      Img: 'assets/Pics/Services4.png',
+      sec_Background: 'blackSec',
+      But_background: 'blueBut',
+      Lg: 'ar',
+      Cat: 'VideoProduction',
+      Dirc: false,
+    },
+    {
+      Title: 'مواقع الويب',
+      Describtion: `إذا سألتك ما هو رأيك في شكل شركتك ، ما رأيك؟
+      نعم ، في الأسلوب والمشهد وأشياء أخرى ، هذا هو
+      بالضبط النقطة التي أريد الوصول إليها. نحن لا نعطي قالب مجاني .. نحن ننشئ.`,
+      Img: 'assets/Pics/Services5.png',
+      sec_Background: 'whiteSec',
+      But_background: 'blueBut',
+      Lg: 'ar',
+      Cat: 'WebDevelopment',
+      Dirc: true,
+    },
+    {
+      Title: 'تطبيقات الهاتف الجوال',
+      Describtion: `إنه المجال الذي يجب أن تكون قد فكرت فيه أو ستفكر فيه في المستقبل القريب جدًا .. ببساطة لماذا لا يكون التطبيق المفيد التالي هو فكرتك؟`,
+      Img: 'assets/Pics/Services6.png',
+      sec_Background: 'blueSec',
+      But_background: 'blackBut',
+      Lg: 'ar',
+      Cat: 'DesktopMobileDevelopment',
+      Dirc: false,
+    },
+    ,
+  ];
+  Objects = this.Objects_en;
   constructor() {}
 
   ngOnInit(): void {}

@@ -2,82 +2,97 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { documentToHtmlString } from '@contentful/rich-text-html-renderer';
 import { Document } from '@contentful/rich-text-types';
+import { HttpClient } from '@angular/common/http';
+import { marked } from 'marked';
 @Component({
   selector: 'app-projects',
   templateUrl: './projects.component.html',
   styleUrls: ['./projects.component.css'],
 })
 export class ProjectsComponent implements OnInit {
-  public Cat: string | undefined;
+  Cat = '';
+  TestProjects: any;
+  data: any;
+  html = '';
+  filteredData: any = [];
+  Id: number | undefined;
+  OneProject: any;
+  empty = false;
   popup = false; //false
-  constructor(private route: ActivatedRoute) {}
+  Pics: any;
+  Vids: any = [];
+  constructor(private route: ActivatedRoute, private http: HttpClient) {
+    /*  this.html = marked(
+      '# This is a Markdown heading\n\nAnd this is a paragraph.'
+    ); */
+    /* this.data?.forEach((element: any) => {
+      element.attributes.description = marked(element.attributes.description);
+    }); */
+  }
   ngOnInit(): void {
     this.Cat = this.route.snapshot.paramMap.get('Cat')!;
+    this.getData(this.Cat);
   }
-  OpenPopUp() {
+  OpenPopUp(id: number) {
     this.popup = true;
     document.body.style.overflow = 'hidden';
-    /* var viewport_width = window.innerWidth;
-    if (viewport_width <= 768) this.page = false; */
+    this.Id = id;
+    this.getProject(this.Id);
   }
   ClosePopUp() {
     this.popup = false;
     document.body.style.overflow = 'visible';
-    /* this.page = true; */
   }
 
-  Pics = [
+  /*   Pics = [
     'assets/Pics/Behance/1.jpg',
     'assets/Pics/Behance/2.jpg',
     'assets/Pics/Behance/3.jpg',
     'assets/Pics/Behance/4.jpg',
-  ];
-  Projects = [
-    {
-      Img: 'assets/Pics/food.png',
-      Title: 'Project Name',
-      Discrib: 'Project discribtion it is information about project',
-    },
-    {
-      Img: 'assets/Pics/food.png',
-      Title: 'Project Name',
-      Discrib: 'Project discribtion it is information about project',
-    },
-    {
-      Img: 'assets/Pics/food.png',
-      Title: 'Project Name',
-      Discrib: 'Project discribtion it is information about project',
-    },
-    {
-      Img: 'assets/Pics/food.png',
-      Title: 'Project Name',
-      Discrib: 'Project discribtion it is information about project',
-    },
-    {
-      Img: 'assets/Pics/food.png',
-      Title: 'Project Name',
-      Discrib: 'Project discribtion it is information about project',
-    },
-    {
-      Img: 'assets/Pics/food.png',
-      Title: 'Project Name',
-      Discrib: 'Project discribtion it is information about project',
-    },
-    {
-      Img: 'assets/Pics/food.png',
-      Title: 'Project Name',
-      Discrib: 'Project discribtion it is information about project',
-    },
-  ];
-  /*  richtext='# Title\n\n## subtitle 1\n\nflkjlfdjklgjlkjldfj\n\n\n## subtitle 2\n\n\nabc just **bold**\nfont _italic_\n\n\n```\n\ncout << \"Hello World\" ;\n\n# ```';
-  returnHtmlFromRichText(richText: Document | null | undefined) {
-    if (
-      richText === undefined ||
-      richText === null ||
-      richText.nodeType !== 'document'
-    ) {
-      return '<p>Error</p>';
-    }
-    return documentToHtmlString(richText);
+  ]; */
+
+  getData(Cat: string) {
+    this.http
+      .get(
+        `https://axes.onrender.com/api/projects/?filters[category][$eq]=${Cat}&populate=*`
+      )
+      .subscribe((data) => {
+        this.data = data;
+        this.filteredData = this.data.data;
+        /*   console.log(this.filteredData); */
+        if (this.filteredData.length === 0) this.empty = true;
+        else this.empty = false;
+      });
+  }
+  /*  filterData(category: string) {
+    this.TestProjects.forEach((element: any) => {
+      if (element.attributes.category === category) {
+        this.filteredData?.push(element);
+        this.filteredData?.push(element);
+        this.filteredData?.push(element);
+        this.filteredData?.push(element);
+        this.filteredData?.push(element);
+      }
+    });
   } */
+  getProject(id: number) {
+    this.http
+      .get(`https://axes.onrender.com/api/projects/${id}?populate=*`)
+      .subscribe((data) => {
+        this.OneProject = data;
+        this.OneProject = this.OneProject.data;
+        this.OneProject.attributes.description = marked(
+          this.OneProject.attributes.description
+        );
+        console.log(this.OneProject);
+        this.Pics = this.OneProject.attributes.projectPhotos.data;
+        this.OneProject.attributes.videoDataJson.forEach((element: any) => {
+          const parts = element.split('/');
+          const lastPart = parts[parts.length - 1];
+          element = 'https://player.vimeo.com/video/' + lastPart;
+          this.Vids?.push(element);
+        });
+        console.log(this.Vids);
+      });
+  }
 }
