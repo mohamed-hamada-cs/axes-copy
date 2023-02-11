@@ -4,6 +4,9 @@ import { documentToHtmlString } from '@contentful/rich-text-html-renderer';
 import { Document } from '@contentful/rich-text-types';
 import { HttpClient } from '@angular/common/http';
 import { marked } from 'marked';
+
+import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
+
 @Component({
   selector: 'app-projects',
   templateUrl: './projects.component.html',
@@ -21,7 +24,12 @@ export class ProjectsComponent implements OnInit {
   popup = false; //false
   Pics: any;
   Vids: any = [];
-  constructor(private route: ActivatedRoute, private http: HttpClient) {
+  safeVids: SafeResourceUrl[] = [];
+  constructor(
+    private route: ActivatedRoute,
+    private http: HttpClient,
+    private sanitizer: DomSanitizer
+  ) {
     /*  this.html = marked(
       '# This is a Markdown heading\n\nAnd this is a paragraph.'
     ); */
@@ -92,7 +100,14 @@ export class ProjectsComponent implements OnInit {
           element = 'https://player.vimeo.com/video/' + lastPart;
           this.Vids?.push(element);
         });
+        this.Vids.forEach((vd: any) => {
+          this.safeVids.push(this.sanitizer.bypassSecurityTrustResourceUrl(vd));
+        });
+        console.log('====================');
         console.log(this.Vids);
+        console.log('====================');
+        console.log(this.safeVids);
+        console.log('====================');
       });
   }
 }
