@@ -14,6 +14,7 @@ import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
 })
 export class ProjectsComponent implements OnInit {
   Cat = '';
+  thumbSrc = '';
   TestProjects: any;
   data: any;
   html = '';
@@ -94,6 +95,10 @@ export class ProjectsComponent implements OnInit {
         );
         console.log(this.OneProject);
         this.Pics = this.OneProject.attributes.projectPhotos.data;
+        this.thumbSrc = this.Pics[0].attributes.url;
+        // this.thumbSrc = this.Pics[0].attributes.formats.thumbnail.url;
+        console.log(this.thumbSrc);
+
         this.OneProject.attributes.videoDataJson.forEach((element: any) => {
           const parts = element.split('/');
           const lastPart = parts[parts.length - 1];
@@ -103,11 +108,6 @@ export class ProjectsComponent implements OnInit {
         this.Vids.forEach((vd: any) => {
           this.safeVids.push(this.sanitizer.bypassSecurityTrustResourceUrl(vd));
         });
-        console.log('====================');
-        console.log(this.Vids);
-        console.log('====================');
-        console.log(this.safeVids);
-        console.log('====================');
       });
   }
 }

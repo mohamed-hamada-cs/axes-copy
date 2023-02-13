@@ -5,7 +5,7 @@
     <div class="bordr"></div>
     <div class="con" *ngIf="!empty">
       <button class="Card" *ngFor="let Project of filteredData" (click)="OpenPopUp(Project.id)">
-        <img id="pic" src="assets/Pics/food.png" alt="" />
+        <img id="pic" [src]="thumbSrc" alt="" />
         <h1 id="title">{{ Project.attributes.title }}</h1>
       </button>
     </div>
@@ -30,6 +30,7 @@
               gdfjghdfgkhdgkjdhgdkjghdkjghdjghdkghdgkdhgkdghdkghdkghdgkdhgkdhgkdghkdghdkghdkg
             </h5> -->
             <img *ngFor="let Pic of Pics" src="{{ Pic.attributes.url }}" alt="" />
+            <!-- <img [src]="thumbSrc" alt="" /> -->
 
             <!--  -->
             <div style="padding: 56.25% 0 0 0; position: relative" *ngFor="let vd of safeVids">
