@@ -9,6 +9,7 @@
 .Container {
   width: 95%;
   margin-left: 2.5%;
+  height: 100vh;
 }
 #seeour {
   font-family: "Trap SemiBold";
@@ -42,6 +43,7 @@
   margin-bottom: 2%;
 }
 .emp {
+  margin-top: 10%;
   height: 80vh;
   width: 100%;
   text-align: center;

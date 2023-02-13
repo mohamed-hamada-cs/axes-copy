@@ -21,6 +21,7 @@ export class ProjectsComponent implements OnInit {
   popup = false; //false
   Pics: any;
   Vids: any = [];
+  NoPro = true;
   constructor(private route: ActivatedRoute, private http: HttpClient) {
     /*  this.html = marked(
       '# This is a Markdown heading\n\nAnd this is a paragraph.'
@@ -60,8 +61,13 @@ export class ProjectsComponent implements OnInit {
         this.data = data;
         this.filteredData = this.data.data;
         /*   console.log(this.filteredData); */
-        if (this.filteredData.length === 0) this.empty = true;
-        else this.empty = false;
+        if (this.filteredData.length === 0) {
+          this.empty = true;
+          this.NoPro = false;
+        } else {
+          this.empty = false;
+          this.NoPro = true;
+        }
       });
   }
   /*  filterData(category: string) {

@@ -1,7 +1,7 @@
 <div id="bod" class="Projects">
   <div class="Container">
-    <h1 id="seeour">See our top quality</h1>
-    <h2 id="popro">Popular Projects</h2>
+    <h1 id="seeour" *ngIf="NoPro">See our top quality</h1>
+    <h2 id="popro" *ngIf="NoPro">Popular Projects</h2>
     <div class="bordr"></div>
     <div class="con" *ngIf="!empty">
       <button
@@ -48,7 +48,7 @@
               *ngFor="let vd of Vids"
             >
               <iframe
-                src="{{ vd }}"
+                src="{ vd }"
                 style="
                   position: absolute;
                   top: 0;
