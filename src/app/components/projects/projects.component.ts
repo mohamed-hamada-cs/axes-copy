@@ -25,7 +25,7 @@ export class ProjectsComponent implements OnInit {
   popup = false; //false
   Pics: any;
   Vids: any = [];
-  NoPro = true;
+  NoPro = false;
   safeVids: SafeResourceUrl[] = [];
   constructor(
     private route: ActivatedRoute,
@@ -69,7 +69,7 @@ export class ProjectsComponent implements OnInit {
       .subscribe((data) => {
         this.data = data;
         this.filteredData = this.data.data;
-        /*   console.log(this.filteredData); */
+        console.log(this.filteredData);
         if (this.filteredData.length === 0) {
           this.empty = true;
           this.NoPro = false;
@@ -101,9 +101,9 @@ export class ProjectsComponent implements OnInit {
         );
         console.log(this.OneProject);
         this.Pics = this.OneProject.attributes.projectPhotos.data;
-        this.thumbSrc = this.Pics[0].attributes.url;
+        /* this.thumbSrc = this.Pics[0].attributes.url; */
         // this.thumbSrc = this.Pics[0].attributes.formats.thumbnail.url;
-        console.log(this.thumbSrc);
+        /* console.log(this.thumbSrc); */
 
         this.OneProject.attributes.videoDataJson.forEach((element: any) => {
           const parts = element.split('/');
