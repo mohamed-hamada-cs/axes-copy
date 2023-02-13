@@ -4,8 +4,16 @@
     <h2 id="popro" *ngIf="NoPro">Popular Projects</h2>
     <div class="bordr"></div>
     <div class="con" *ngIf="!empty">
-      <button class="Card" *ngFor="let Project of filteredData" (click)="OpenPopUp(Project.id)">
-        <img id="pic" [src]="thumbSrc" alt="" />
+      <button
+        class="Card"
+        *ngFor="let Project of filteredData"
+        (click)="OpenPopUp(Project.id)"
+      >
+        <img
+          id="pic"
+          [src]="Project.attributes.projectPhotos.data[0].attributes.url"
+          alt=""
+        />
         <h1 id="title">{{ Project.attributes.title }}</h1>
       </button>
     </div>
@@ -23,26 +31,41 @@
         <div class="popupModal-body">
           <div class="ContentB">
             <h1 id="ProTitle">{{ OneProject.attributes.title }}</h1>
-            <div id="ProDis" [innerHTML]="OneProject.attributes.description"></div>
+            <div
+              id="ProDis"
+              [innerHTML]="OneProject.attributes.description"
+            ></div>
             <!-- <h5>
               Project Discrib
               fdhgjfdgdfjgdhgjdhgdjghdjghdghdgjdhgkdhgjdhgdkghdkghdkghdkgd
               gdfjghdfgkhdgkjdhgdkjghdkjghdjghdkghdgkdhgkdghdkghdkghdgkdhgkdhgkdghkdghdkghdkg
             </h5> -->
-            <img *ngFor="let Pic of Pics" src="{{ Pic.attributes.url }}" alt="" />
+            <img
+              *ngFor="let Pic of Pics"
+              src="{{ Pic.attributes.url }}"
+              alt=""
+            />
             <!-- <img [src]="thumbSrc" alt="" /> -->
 
             <!--  -->
 
-            <div style="padding: 56.25% 0 0 0; position: relative" *ngFor="let vd of safeVids">
-              <iframe [src]="vd" style="
-
+            <div
+              style="padding: 56.25% 0 0 0; position: relative"
+              *ngFor="let vd of safeVids"
+            >
+              <iframe
+                [src]="vd"
+                style="
                   position: absolute;
                   top: 0;
                   left: 0;
                   width: 100%;
                   height: 100%;
-                " frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe>
+                "
+                frameborder="0"
+                allow="autoplay; fullscreen; picture-in-picture"
+                allowfullscreen
+              ></iframe>
             </div>
             <script src="https://player.vimeo.com/api/player.js"></script>
           </div>
