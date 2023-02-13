@@ -4,6 +4,9 @@ import { documentToHtmlString } from '@contentful/rich-text-html-renderer';
 import { Document } from '@contentful/rich-text-types';
 import { HttpClient } from '@angular/common/http';
 import { marked } from 'marked';
+
+import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
+
 @Component({
   selector: 'app-projects',
   templateUrl: './projects.component.html',
@@ -11,6 +14,7 @@ import { marked } from 'marked';
 })
 export class ProjectsComponent implements OnInit {
   Cat = '';
+  thumbSrc = '';
   TestProjects: any;
   data: any;
   html = '';
@@ -22,7 +26,12 @@ export class ProjectsComponent implements OnInit {
   Pics: any;
   Vids: any = [];
   NoPro = true;
-  constructor(private route: ActivatedRoute, private http: HttpClient) {
+  safeVids: SafeResourceUrl[] = [];
+  constructor(
+    private route: ActivatedRoute,
+    private http: HttpClient,
+    private sanitizer: DomSanitizer
+  ) {
     /*  this.html = marked(
       '# This is a Markdown heading\n\nAnd this is a paragraph.'
     ); */
@@ -92,13 +101,19 @@ export class ProjectsComponent implements OnInit {
         );
         console.log(this.OneProject);
         this.Pics = this.OneProject.attributes.projectPhotos.data;
+        this.thumbSrc = this.Pics[0].attributes.url;
+        // this.thumbSrc = this.Pics[0].attributes.formats.thumbnail.url;
+        console.log(this.thumbSrc);
+
         this.OneProject.attributes.videoDataJson.forEach((element: any) => {
           const parts = element.split('/');
           const lastPart = parts[parts.length - 1];
           element = 'https://player.vimeo.com/video/' + lastPart;
           this.Vids?.push(element);
         });
-        console.log(this.Vids);
+        this.Vids.forEach((vd: any) => {
+          this.safeVids.push(this.sanitizer.bypassSecurityTrustResourceUrl(vd));
+        });
       });
   }
 }
