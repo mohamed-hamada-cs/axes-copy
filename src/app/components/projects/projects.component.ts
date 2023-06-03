@@ -44,12 +44,14 @@ export class ProjectsComponent implements OnInit {
     this.getData(this.Cat);
   }
   OpenPopUp(id: number) {
+    this.safeVids = []; 
     this.popup = true;
     document.body.style.overflow = 'hidden';
     this.Id = id;
     this.getProject(this.Id);
   }
   ClosePopUp() {
+    this.safeVids = []; 
     this.popup = false;
     document.body.style.overflow = 'visible';
   }
@@ -64,7 +66,7 @@ export class ProjectsComponent implements OnInit {
   getData(Cat: string) {
     this.http
       .get(
-        `https://axes.onrender.com/api/projects/?filters[category][$eq]=${Cat}&populate=*`
+        `http://77.243.85.19:1337/api/projects/?filters[category][$eq]=${Cat}&populate=*`
       )
       .subscribe((data) => {
         this.data = data;
@@ -92,19 +94,21 @@ export class ProjectsComponent implements OnInit {
   } */
   getProject(id: number) {
     this.http
-      .get(`https://axes.onrender.com/api/projects/${id}?populate=*`)
+      .get(`http://77.243.85.19:1337/api/projects/${id}?populate=*`)
       .subscribe((data) => {
         this.OneProject = data;
         this.OneProject = this.OneProject.data;
         this.OneProject.attributes.description = marked(
           this.OneProject.attributes.description
         );
+        console.log("GET PROJECT FUCNTION");
+        
         console.log(this.OneProject);
         this.Pics = this.OneProject.attributes.projectPhotos.data;
         /* this.thumbSrc = this.Pics[0].attributes.url; */
         // this.thumbSrc = this.Pics[0].attributes.formats.thumbnail.url;
         /* console.log(this.thumbSrc); */
-
+        this.Vids = [];
         this.OneProject.attributes.videoDataJson.forEach((element: any) => {
           const parts = element.split('/');
           const lastPart = parts[parts.length - 1];

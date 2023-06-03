@@ -11,7 +11,7 @@
       >
         <img
           id="pic"
-          [src]="Project.attributes.projectPhotos.data[0].attributes.url"
+          [src]=" 'http://77.243.85.19:1337' + Project.attributes.projectPhotos.data[0].attributes.url"
           alt=""
         />
         <h1 id="title">{{ Project.attributes.title }}</h1>
@@ -42,7 +42,7 @@
             </h5> -->
             <img
               *ngFor="let Pic of Pics"
-              src="{{ Pic.attributes.url }}"
+              src="{{ 'http://77.243.85.19:1337' + Pic.attributes.url }}"
               alt=""
             />
             <!-- <img [src]="thumbSrc" alt="" /> -->
@@ -74,6 +74,3 @@
     </div>
   </div>
 </div>
-<!--  -->
-
-<!--  -->
